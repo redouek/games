@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca de Notícias - Games</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Busca de Notícias - Games</h1>
+    </header>
+    <main>
+        <section class="noticias">
+            <h2>Últimas Notícias</h2>
+            {% for portal, noticias in noticias.items() %}
+            <h3>{{ portal }}</h3>
+            <ul>
+                {% for noticia in noticias %}
+                <li>
+                    <a href="{{ noticia.link }}">
+                        <h4>{{ noticia.titulo }}</h4>
+                        <p>{{ noticia.resumo }}</p>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+        </section>
+    </main>
+    <footer>
+        <p>Desenvolvido por &copy; {{ nome_desenvolvedor }}</p>
+    </footer>
+</body>
+</html>
