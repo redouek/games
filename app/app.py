@@ -2,6 +2,7 @@ from flask import Flask, render_template
 from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 import requests
+from lxml import html
 
 # Lista de portais de notícias
 PORTAIS = {
@@ -24,17 +25,19 @@ def buscar_noticias():
     global noticias
     noticias = {}
     for nome, url in PORTAIS.items():
-        html = requests.get(url).content
-        soup = BeautifulSoup(html, "html.parser")
+        html_content = requests.get(url).content
+        soup = BeautifulSoup(html_content, "html.parser")
         noticias_portal = []
         for noticia in soup.find_all("article"):
             titulo = noticia.find("h2").text
             resumo = noticia.find("p").text
             link = noticia.find("a")["href"]
+            data = noticia.find("time")["datetime"]
             noticias_portal.append({
                 "titulo": titulo,
                 "resumo": resumo,
-                "link": link
+                "link": link,
+                "data": datetime.strptime(data, "%Y-%m-%dT%H:%M:%SZ")
             })
         noticias[nome] = noticias_portal
 
