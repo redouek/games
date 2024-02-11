@@ -1,14 +1,14 @@
 body {
-    background-color: #222;
-    color: #fff;
+    background-color: #222; /* Cor Secundária */
+    color: #fff; /* Cor Terciária */
 }
 
 h1, h2, h3, h4 {
-    color: #F9b902;
+    color: #F9b902; /* Cor Principal */
 }
 
 a {
-    color: #F9b902;
+    color: #F9b902; /* Cor Principal */
     text-decoration: none;
 }
 
