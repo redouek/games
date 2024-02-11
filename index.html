@@ -21,6 +21,7 @@
                     <a href="{{ noticia.link }}">
                         <h4>{{ noticia.titulo }}</h4>
                         <p>{{ noticia.resumo }}</p>
+                        <span class="data">{{ noticia.data.strftime("%d/%m/%Y %H:%M") }}</span>
                     </a>
                 </li>
                 {% endfor %}
